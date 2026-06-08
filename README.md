@@ -225,6 +225,210 @@ The kubectl command communicates with the Kubernetes API Server over port 6443.
 
 ---
 
+
+## Switches
+
+A switch is a networking device that connects multiple devices within the same Local Area Network (LAN) and forwards data based on MAC addresses.
+
+### How a Switch Works
+
+* Each device has a unique MAC address.
+* The switch learns which MAC address belongs to which port.
+* Data is sent only to the intended device instead of broadcasting to everyone.
+
+### Real-World Example
+
+In an office network:
+
+* Laptop A
+* Laptop B
+* Printer
+* Server
+
+All devices connect to a switch.
+
+When Laptop A sends data to the Server, the switch forwards the traffic only to the server's port.
+
+### Why Switches Matter in DevOps
+
+* Connect servers within a data center.
+* Enable communication between virtualization hosts.
+* Support containerized and cloud-native workloads.
+* Reduce unnecessary network traffic.
+
+---
+
+## Routers
+
+A router connects different networks and forwards packets based on IP addresses.
+
+### Example
+
+A home network may use:
+
+* Private Network: 192.168.1.0/24
+* Internet: Public IP Network
+
+The router enables devices in the private network to access the internet.
+
+### DevOps Relevance
+
+Cloud routers are used for:
+
+* AWS VPC routing
+* Azure Virtual Networks
+* Hybrid cloud connectivity
+* Internet Gateways
+* NAT Gateways
+
+---
+
+## What is a Subnet?
+
+A subnet (subnetwork) is a logical division of a larger network into smaller networks.
+
+Subnetting helps:
+
+* Improve security
+* Reduce broadcast traffic
+* Organize infrastructure
+* Separate environments
+
+### Example
+
+Network:
+
+```text
+192.168.1.0/24
+```
+
+Can be divided into:
+
+```text
+192.168.1.0/26
+192.168.1.64/26
+192.168.1.128/26
+192.168.1.192/26
+```
+
+Each subnet can be used for different resources.
+
+For example:
+
+| Subnet             | Purpose           |
+| ------------------ | ----------------- |
+| Public Subnet      | Web Servers       |
+| Private Subnet     | Databases         |
+| Management Subnet  | Monitoring Tools  |
+| Development Subnet | Testing Resources |
+
+---
+
+## Public vs Private Subnets
+
+### Public Subnet
+
+Resources have internet access.
+
+Examples:
+
+* Web Servers
+* Load Balancers
+* Reverse Proxies
+
+AWS Example:
+
+```text
+10.0.1.0/24
+```
+
+### Private Subnet
+
+Resources are not directly accessible from the internet.
+
+Examples:
+
+* Databases
+* Internal APIs
+* Backend Services
+
+AWS Example:
+
+```text
+10.0.2.0/24
+```
+
+### DevOps Best Practice
+
+Place:
+
+* Application Servers → Public Subnet
+* Databases → Private Subnet
+
+This improves security significantly.
+
+---
+
+## CIDR Notation
+
+CIDR (Classless Inter-Domain Routing) defines the size of a network.
+
+Examples:
+
+| CIDR | Total IPs |
+| ---- | --------- |
+| /24  | 256       |
+| /25  | 128       |
+| /26  | 64        |
+| /27  | 32        |
+| /28  | 16        |
+
+### Common AWS Example
+
+```text
+VPC: 10.0.0.0/16
+
+Public Subnet:
+10.0.1.0/24
+
+Private Subnet:
+10.0.2.0/24
+```
+
+---
+
+## Real-World AWS Architecture
+
+```text
+Internet
+    │
+Internet Gateway
+    │
+Load Balancer
+    │
+Public Subnet
+    │
+EC2 Web Servers
+    │
+Private Subnet
+    │
+RDS Database
+```
+
+This is one of the most common production architectures used in cloud environments.
+
+---
+
+# Key Takeaways
+
+* Switches connect devices within the same network using MAC addresses.
+* Routers connect different networks using IP addresses.
+* Subnets divide large networks into smaller manageable sections.
+* Public subnets host internet-facing resources.
+* Private subnets protect sensitive resources like databases.
+* Understanding subnetting is essential for AWS, Azure, Kubernetes, Docker, and Terraform.
+
+
 # Conclusion
 
 Networking forms the foundation of modern DevOps practices. Understanding OSI and TCP/IP models helps engineers troubleshoot communication issues, while knowledge of protocols and ports enables secure deployments, cloud infrastructure management, container orchestration, and CI/CD automation.
