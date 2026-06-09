@@ -1,0 +1,115 @@
+=========================================
+CHAPTER 3: USERS & GROUPS MANAGEMENT
+=========================================
+
+Commands to manage users, groups, passwords, and privileges on Linux systems.
+
+1. useradd
+   Description : Add a new user
+   Example     : useradd -m john
+
+-----------------------------------------
+
+2. userdel
+   Description : Delete a user
+   Example     : userdel -r john
+
+-----------------------------------------
+
+3. usermod
+   Description : Modify a user account
+   Example     : usermod -aG sudo john
+
+-----------------------------------------
+
+4. su
+   Description : Switch to another user
+   Example     : su - john
+
+-----------------------------------------
+
+5. sudo
+   Description : Run a command as superuser
+   Example     : sudo apt update
+
+-----------------------------------------
+
+6. passwd
+   Description : Set or change a user password
+   Example     : passwd john
+
+-----------------------------------------
+
+7. whoami
+   Description : Show the current logged-in user
+   Example     : whoami
+
+-----------------------------------------
+
+8. who
+   Description : Show who is currently logged in
+   Example     : who
+
+-----------------------------------------
+
+9. w
+   Description : Show logged-in users and their activity
+   Example     : w
+
+-----------------------------------------
+
+10. id
+    Description : Display user and group IDs
+    Example     : id john
+
+-----------------------------------------
+
+11. groupadd
+    Description : Create a new group
+    Example     : groupadd developers
+
+-----------------------------------------
+
+12. groupdel
+    Description : Delete a group
+    Example     : groupdel oldgroup
+
+-----------------------------------------
+
+13. gpasswd -a
+    Description : Add a user to a group
+    Example     : gpasswd -a john developers
+
+-----------------------------------------
+
+14. gpasswd -m
+    Description : Set members of a group
+    Example     : gpasswd -m john,mary developers
+
+-----------------------------------------
+
+15. groups
+    Description : Show groups a user belongs to
+    Example     : groups john
+
+-----------------------------------------
+
+16. visudo
+    Description : Safely edit the sudoers file
+    Example     : visudo
+
+-----------------------------------------
+
+17. shutdown
+    Description : Shut down the system
+    Example     : shutdown -h now
+
+-----------------------------------------
+
+18. reboot
+    Description : Reboot the system
+    Example     : reboot
+
+=========================================
+END OF CHAPTER 3
+=========================================
