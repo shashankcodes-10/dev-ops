@@ -1,0 +1,179 @@
+=========================================
+CHAPTER 10: SERVICES, SCHEDULING & PACKAGE MANAGERS
+=========================================
+
+PART A: SERVICES & SCHEDULING
+-----------------------------------------
+
+Manage system services using systemd and automate tasks using cron jobs.
+
+1. systemctl start
+   Description : Start a service
+   Example     : systemctl start nginx
+
+-----------------------------------------
+
+2. systemctl stop
+   Description : Stop a running service
+   Example     : systemctl stop nginx
+
+-----------------------------------------
+
+3. systemctl restart
+   Description : Restart a service
+   Example     : systemctl restart nginx
+
+-----------------------------------------
+
+4. systemctl status
+   Description : Check the status of a service
+   Example     : systemctl status nginx
+
+-----------------------------------------
+
+5. systemctl enable
+   Description : Enable a service to start at boot
+   Example     : systemctl enable nginx
+
+-----------------------------------------
+
+6. systemctl disable
+   Description : Disable a service from starting at boot
+   Example     : systemctl disable nginx
+
+-----------------------------------------
+
+7. journalctl
+   Description : View systemd journal logs
+   Example     : journalctl -u nginx -f
+
+-----------------------------------------
+
+8. journalctl -f
+   Description : Follow journal logs in real time
+   Example     : journalctl -f
+
+-----------------------------------------
+
+9. crontab -e
+   Description : Edit scheduled cron jobs
+   Example     : crontab -e
+
+-----------------------------------------
+
+10. crontab -l
+    Description : List all scheduled cron jobs
+    Example     : crontab -l
+
+-----------------------------------------
+
+CRON FORMAT REFERENCE
+
+* * * * * command
+│ │ │ │ │
+│ │ │ │ └── Day of Week (0-7)
+│ │ │ └──── Month (1-12)
+│ │ └────── Day of Month (1-31)
+│ └──────── Hour (0-23)
+└────────── Minute (0-59)
+
+Example:
+   0 2 * * * /home/user/backup.sh
+
+Runs backup.sh every day at 2:00 AM.
+
+=========================================
+PART B: PACKAGE MANAGERS
+=========================================
+
+Install, update, upgrade, and remove software packages on Linux systems.
+
+1. apt update
+   Description : Update package repository information
+   Example     : sudo apt update
+
+-----------------------------------------
+
+2. apt install
+   Description : Install a package
+   Example     : sudo apt install nginx
+
+-----------------------------------------
+
+3. apt remove
+   Description : Remove an installed package
+   Example     : sudo apt remove nginx
+
+-----------------------------------------
+
+4. apt upgrade
+   Description : Upgrade all installed packages
+   Example     : sudo apt upgrade
+
+-----------------------------------------
+
+5. yum install
+   Description : Install a package on RHEL/CentOS
+   Example     : sudo yum install httpd
+
+-----------------------------------------
+
+6. yum update
+   Description : Update installed packages on RHEL/CentOS
+   Example     : sudo yum update
+
+-----------------------------------------
+
+7. dnf install
+   Description : Install a package on Fedora
+   Example     : sudo dnf install nginx
+
+-----------------------------------------
+
+8. pacman -S
+   Description : Install a package on Arch Linux
+   Example     : sudo pacman -S nginx
+
+-----------------------------------------
+
+9. portage
+   Description : Package management system for Gentoo Linux
+   Example     : emerge --ask nginx
+
+-----------------------------------------
+
+10. rpm -i
+    Description : Install an RPM package manually
+    Example     : sudo rpm -i package.rpm
+
+-----------------------------------------
+
+11. dpkg -i
+    Description : Install a DEB package manually
+    Example     : sudo dpkg -i package.deb
+
+-----------------------------------------
+
+PACKAGE MANAGER REFERENCE
+
+Ubuntu / Debian
+   apt update
+   apt install <package>
+   apt remove <package>
+
+RHEL / CentOS
+   yum install <package>
+   yum update
+
+Fedora
+   dnf install <package>
+
+Arch Linux
+   pacman -S <package>
+
+Gentoo
+   emerge --ask <package>
+
+=========================================
+END OF CHAPTER 10
+=========================================
