@@ -1,0 +1,144 @@
+=========================================
+CHAPTER 9: LVM (LOGICAL VOLUME MANAGER)
+=========================================
+
+Create, manage, and extend logical volumes for flexible disk management.
+
+1. fdisk
+   Description : Disk partitioning utility
+   Example     : fdisk /dev/sdb
+
+-----------------------------------------
+
+2. lsblk
+   Description : List all block devices and partitions
+   Example     : lsblk
+
+-----------------------------------------
+
+3. mkfs.ext4
+   Description : Format a partition with the ext4 filesystem
+   Example     : mkfs.ext4 /dev/sdb1
+
+-----------------------------------------
+
+4. mount
+   Description : Mount a filesystem to a directory
+   Example     : mount /dev/sdb1 /mnt/data
+
+-----------------------------------------
+
+5. umount
+   Description : Unmount a mounted filesystem
+   Example     : umount /mnt/data
+
+-----------------------------------------
+
+6. pvcreate
+   Description : Create a Physical Volume (PV)
+   Example     : pvcreate /dev/sdb
+
+-----------------------------------------
+
+7. pvdisplay
+   Description : Display detailed information about Physical Volumes
+   Example     : pvdisplay
+
+-----------------------------------------
+
+8. pvs
+   Description : List Physical Volumes in summary format
+   Example     : pvs
+
+-----------------------------------------
+
+9. vgcreate
+   Description : Create a Volume Group (VG)
+   Example     : vgcreate vg_data /dev/sdb
+
+-----------------------------------------
+
+10. vgdisplay
+    Description : Display detailed information about Volume Groups
+    Example     : vgdisplay
+
+-----------------------------------------
+
+11. vgs
+    Description : List Volume Groups in summary format
+    Example     : vgs
+
+-----------------------------------------
+
+12. lvcreate
+    Description : Create a Logical Volume (LV)
+    Example     : lvcreate -L 10G -n lv_app vg_data
+
+-----------------------------------------
+
+13. lvdisplay
+    Description : Display detailed information about Logical Volumes
+    Example     : lvdisplay
+
+-----------------------------------------
+
+14. lvs
+    Description : List Logical Volumes in summary format
+    Example     : lvs
+
+-----------------------------------------
+
+15. lvextend
+    Description : Extend the size of a Logical Volume
+    Example     : lvextend -L +5G /dev/vg_data/lv_app
+
+-----------------------------------------
+
+16. resize2fs
+    Description : Resize an ext2/ext3/ext4 filesystem
+    Example     : resize2fs /dev/vg_data/lv_app
+
+-----------------------------------------
+
+LVM WORKFLOW QUICK REFERENCE
+
+Step 1 : Create Physical Volume
+   pvcreate /dev/sdb
+
+Step 2 : Create Volume Group
+   vgcreate vg_data /dev/sdb
+
+Step 3 : Create Logical Volume
+   lvcreate -L 10G -n lv_app vg_data
+
+Step 4 : Format the Logical Volume
+   mkfs.ext4 /dev/vg_data/lv_app
+
+Step 5 : Mount the Filesystem
+   mount /dev/vg_data/lv_app /mnt/data
+
+Step 6 : Extend the Logical Volume
+   lvextend -L +5G /dev/vg_data/lv_app
+
+Step 7 : Resize the Filesystem
+   resize2fs /dev/vg_data/lv_app
+
+-----------------------------------------
+
+KEY LVM COMPONENTS
+
+PV (Physical Volume)
+   Physical disk or partition used by LVM.
+
+VG (Volume Group)
+   Pool of storage created from one or more PVs.
+
+LV (Logical Volume)
+   Virtual partition created from a VG.
+
+Filesystem
+   ext4, xfs, or another filesystem created on the LV.
+
+=========================================
+END OF CHAPTER 9
+=========================================
