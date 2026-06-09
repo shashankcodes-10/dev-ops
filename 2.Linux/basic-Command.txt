@@ -1,0 +1,157 @@
+=========================================
+CHAPTER 1: BASIC COMMANDS
+=========================================
+
+Fundamental shell commands every DevOps engineer must know for daily navigation and file operations.
+
+1. ls
+   Description : List files and directories
+   Example     : ls -la /home
+
+-----------------------------------------
+
+2. ls -l
+   Description : Long listing format with permissions
+   Example     : ls -l /var/log
+
+-----------------------------------------
+
+3. ls -a
+   Description : Show hidden files
+   Example     : ls -a ~
+
+-----------------------------------------
+
+4. cd
+   Description : Change directory
+   Example     : cd /var/log
+
+-----------------------------------------
+
+5. pwd
+   Description : Print working directory
+   Example     : pwd
+
+-----------------------------------------
+
+6. mkdir
+   Description : Create directory
+   Example     : mkdir myproject
+
+-----------------------------------------
+
+7. mkdir -p
+   Description : Create nested directories
+   Example     : mkdir -p a/b/c
+
+-----------------------------------------
+
+8. rmdir
+   Description : Remove empty directory
+   Example     : rmdir olddir
+
+-----------------------------------------
+
+9. rm
+   Description : Remove files
+   Example     : rm file.txt
+
+-----------------------------------------
+
+10. rm -rf
+    Description : Force remove directory recursively
+    Example     : rm -rf /tmp/junk
+
+-----------------------------------------
+
+11. cp
+    Description : Copy files or directories
+    Example     : cp file.txt /backup/
+
+-----------------------------------------
+
+12. mv
+    Description : Move or rename files
+    Example     : mv old.txt new.txt
+
+-----------------------------------------
+
+13. touch
+    Description : Create empty file or update timestamp
+    Example     : touch notes.txt
+
+-----------------------------------------
+
+14. cat
+    Description : View file content
+    Example     : cat /etc/hosts
+
+-----------------------------------------
+
+15. zcat
+    Description : View gzip-compressed file
+    Example     : zcat file.gz
+
+-----------------------------------------
+
+16. echo
+    Description : Print text to output
+    Example     : echo "Hello World"
+
+-----------------------------------------
+
+17. clear
+    Description : Clear terminal screen
+    Example     : clear
+
+-----------------------------------------
+
+18. history
+    Description : Show command history
+    Example     : history | tail -20
+
+-----------------------------------------
+
+19. man
+    Description : Manual page for a command
+    Example     : man ls
+
+-----------------------------------------
+
+20. whoami
+    Description : Show current logged-in user
+    Example     : whoami
+
+-----------------------------------------
+
+21. date
+    Description : Show current date and time
+    Example     : date
+
+-----------------------------------------
+
+22. cal
+    Description : Display calendar
+    Example     : cal 2025
+
+-----------------------------------------
+
+23. uptime
+    Description : Show system uptime
+    Example     : uptime
+
+-----------------------------------------
+
+24. uname -a
+    Description : Full system information
+    Example     : uname -a
+
+-----------------------------------------
+
+25. hostname
+    Description : Show or set hostname
+    Example     : hostname
+
+=========================================
+END OF CHAPTER 1
+=========================================
