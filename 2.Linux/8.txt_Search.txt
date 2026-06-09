@@ -1,0 +1,138 @@
+=========================================
+CHAPTER 8: AWK, GREP, FIND & SED
+=========================================
+
+Pro-level text search and manipulation tools used extensively in DevOps scripting.
+
+1. grep
+   Description : Search text using a pattern
+   Example     : grep "error" /var/log/syslog
+
+-----------------------------------------
+
+2. grep -r
+   Description : Perform a recursive search through directories
+   Example     : grep -r "TODO" /src/
+
+-----------------------------------------
+
+3. grep -i
+   Description : Perform a case-insensitive search
+   Example     : grep -i "error" app.log
+
+-----------------------------------------
+
+4. grep -v
+   Description : Exclude matching lines from output
+   Example     : grep -v "debug" app.log
+
+-----------------------------------------
+
+5. grep -n
+   Description : Display matching lines with line numbers
+   Example     : grep -n "main" app.py
+
+-----------------------------------------
+
+6. grep -c
+   Description : Count matching lines
+   Example     : grep -c "error" app.log
+
+-----------------------------------------
+
+7. awk
+   Description : Pattern scanning and text processing tool
+   Example     : awk '{print $1}' access.log
+
+-----------------------------------------
+
+8. awk -F
+   Description : Specify a field separator
+   Example     : awk -F: '{print $1}' /etc/passwd
+
+-----------------------------------------
+
+9. awk NR
+   Description : Process or print specific line numbers
+   Example     : awk 'NR==5' file.txt
+
+-----------------------------------------
+
+10. sed
+    Description : Stream editor for text manipulation
+    Example     : sed 's/old/new/g' file.txt
+
+-----------------------------------------
+
+11. sed -n
+    Description : Suppress automatic output and print selectively
+    Example     : sed -n '5,10p' file.txt
+
+-----------------------------------------
+
+12. sed -i
+    Description : Edit files in-place
+    Example     : sed -i 's/foo/bar/g' config.txt
+
+-----------------------------------------
+
+13. find
+    Description : Search for files and directories
+    Example     : find /var -name '*.log'
+
+-----------------------------------------
+
+14. find -name
+    Description : Find files by name
+    Example     : find . -name 'app.py'
+
+-----------------------------------------
+
+15. find -type
+    Description : Find files or directories by type
+    Example     : find . -type f -name '*.sh'
+
+-----------------------------------------
+
+16. find -size
+    Description : Find files by size
+    Example     : find / -size +100M
+
+-----------------------------------------
+
+17. find -mtime
+    Description : Find files based on modification time
+    Example     : find . -mtime -7
+
+-----------------------------------------
+
+18. find -exec
+    Description : Execute a command on each found file
+    Example     : find . -name '*.log' -exec rm {} \;
+
+-----------------------------------------
+
+QUICK REFERENCE
+
+grep  : Search text patterns
+awk   : Process and analyze structured text
+sed   : Edit and transform text streams
+find  : Locate files and directories
+
+Common DevOps Usage:
+
+• Search errors in logs
+  grep "ERROR" application.log
+
+• Extract first column from a file
+  awk '{print $1}' file.txt
+
+• Replace text in configuration files
+  sed -i 's/old/new/g' config.txt
+
+• Find and delete old log files
+  find /var/log -name '*.log' -exec rm {} \;
+
+=========================================
+END OF CHAPTER 8
+=========================================
