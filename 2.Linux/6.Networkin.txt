@@ -1,0 +1,166 @@
+=========================================
+CHAPTER 6: NETWORKING COMMANDS
+=========================================
+
+Essential networking commands for diagnostics, monitoring, and configuration.
+
+1. ping
+   Description : Test network connectivity
+   Example     : ping google.com
+
+-----------------------------------------
+
+2. ping -c
+   Description : Send a specified number of ping requests
+   Example     : ping -c 4 google.com
+
+-----------------------------------------
+
+3. ifconfig
+   Description : Show or configure network interfaces
+   Example     : ifconfig eth0
+
+-----------------------------------------
+
+4. ip addr
+   Description : Display IP addresses and network interfaces
+   Example     : ip addr show
+
+-----------------------------------------
+
+5. ip route
+   Description : Display the routing table
+   Example     : ip route show
+
+-----------------------------------------
+
+6. netstat
+   Description : Show network connections and statistics
+   Example     : netstat -tulnp
+
+-----------------------------------------
+
+7. ss
+   Description : Display socket statistics
+   Example     : ss -tulnp
+
+-----------------------------------------
+
+8. traceroute
+   Description : Trace the route packets take to a destination
+   Example     : traceroute google.com
+
+-----------------------------------------
+
+9. tracepath
+   Description : Trace network path without requiring root privileges
+   Example     : tracepath google.com
+
+-----------------------------------------
+
+10. mtr
+    Description : Combine ping and traceroute functionality
+    Example     : mtr google.com
+
+-----------------------------------------
+
+11. nslookup
+    Description : Query DNS records
+    Example     : nslookup google.com
+
+-----------------------------------------
+
+12. dig
+    Description : Perform detailed DNS queries
+    Example     : dig google.com A
+
+-----------------------------------------
+
+13. telnet
+    Description : Test connectivity to a remote port
+    Example     : telnet server.com 80
+
+-----------------------------------------
+
+14. nc / netcat
+    Description : Read and write TCP/UDP connections
+    Example     : nc -zv server.com 80
+
+-----------------------------------------
+
+15. whois
+    Description : Display domain or IP registration information
+    Example     : whois google.com
+
+-----------------------------------------
+
+16. arp
+    Description : Show or manipulate the ARP table
+    Example     : arp -a
+
+-----------------------------------------
+
+17. route
+    Description : Show or modify the routing table
+    Example     : route -n
+
+-----------------------------------------
+
+18. nmap
+    Description : Scan networks and discover services
+    Example     : nmap -sV 192.168.1.0/24
+
+-----------------------------------------
+
+19. watch
+    Description : Execute a command repeatedly at intervals
+    Example     : watch -n 2 df -h
+
+-----------------------------------------
+
+20. iptables
+    Description : Configure and manage firewall rules
+    Example     : iptables -L -n
+
+-----------------------------------------
+
+21. iwconfig
+    Description : Configure wireless network interfaces
+    Example     : iwconfig wlan0
+
+-----------------------------------------
+
+22. ifplugstatus
+    Description : Check whether a network cable is connected
+    Example     : ifplugstatus eth0
+
+-----------------------------------------
+
+23. hostname
+    Description : Show system hostname or IP address
+    Example     : hostname -I
+
+-----------------------------------------
+
+24. curl vs wget
+    Description : Comparison of common network download tools
+
+    curl :
+      - Designed for transferring data to and from URLs
+      - Commonly used with APIs
+      - Supports custom headers, authentication, and HTTP methods
+      - Can display response headers and body
+
+    wget :
+      - Designed primarily for downloading files
+      - Supports recursive downloads
+      - Can resume interrupted downloads
+      - Better suited for website mirroring and bulk downloads
+
+    Example :
+      curl -I https://example.com
+      wget https://example.com/file.zip
+
+=========================================
+END OF CHAPTER 6
+=========================================
