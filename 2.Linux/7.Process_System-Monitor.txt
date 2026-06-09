@@ -1,0 +1,97 @@
+=========================================
+CHAPTER 7: PROCESS & SYSTEM MONITORING
+=========================================
+
+Monitor and manage running processes, memory, CPU, and disk usage.
+
+1. ps
+   Description : Show current running processes
+   Example     : ps aux
+
+-----------------------------------------
+
+2. ps aux
+   Description : Display all running processes with detailed information
+   Example     : ps aux | grep nginx
+
+-----------------------------------------
+
+3. top
+   Description : Interactive real-time process monitor
+   Example     : top
+
+-----------------------------------------
+
+4. htop
+   Description : Enhanced interactive process viewer
+   Example     : htop
+
+-----------------------------------------
+
+5. kill
+   Description : Terminate a process using its PID
+   Example     : kill 1234
+
+-----------------------------------------
+
+6. kill -9
+   Description : Forcefully terminate a process
+   Example     : kill -9 1234
+
+-----------------------------------------
+
+7. fuser
+   Description : Identify processes using a file, directory, or port
+   Example     : fuser 80/tcp
+
+-----------------------------------------
+
+8. nohup
+   Description : Run a command that continues after logout
+   Example     : nohup ./server.sh &
+
+-----------------------------------------
+
+9. free -h
+   Description : Display memory usage in human-readable format
+   Example     : free -h
+
+-----------------------------------------
+
+10. vmstat
+    Description : Display virtual memory and system statistics
+    Example     : vmstat 2 5
+
+-----------------------------------------
+
+11. df -h
+    Description : Show disk space usage in human-readable format
+    Example     : df -h
+
+-----------------------------------------
+
+12. du -sh
+    Description : Show total size of a directory
+    Example     : du -sh /var/log
+
+-----------------------------------------
+
+13. iostat
+    Description : Display CPU and disk I/O statistics
+    Example     : iostat -x 2
+
+-----------------------------------------
+
+14. lscpu
+    Description : Display detailed CPU information
+    Example     : lscpu
+
+-----------------------------------------
+
+15. lsblk
+    Description : List block storage devices and partitions
+    Example     : lsblk
+
+=========================================
+END OF CHAPTER 7
+=========================================
