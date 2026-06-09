@@ -1,0 +1,85 @@
+=========================================
+CHAPTER 4: FILE MANAGEMENT
+=========================================
+
+File permissions, ownership, compression, and archive management commands.
+
+1. umask
+   Description : Set default permission mask
+   Example     : umask 022
+
+-----------------------------------------
+
+2. ls -l
+   Description : View file permissions
+   Example     : ls -l /etc/passwd
+
+-----------------------------------------
+
+3. chmod
+   Description : Change file permissions
+   Example     : chmod 755 script.sh
+
+-----------------------------------------
+
+4. chmod +x
+   Description : Make a file executable
+   Example     : chmod +x deploy.sh
+
+-----------------------------------------
+
+5. chown
+   Description : Change file owner
+   Example     : chown john:john file.txt
+
+-----------------------------------------
+
+6. chgrp
+   Description : Change group ownership
+   Example     : chgrp developers project/
+
+-----------------------------------------
+
+7. zip
+   Description : Compress files into a ZIP archive
+   Example     : zip archive.zip file1 file2
+
+-----------------------------------------
+
+8. unzip
+   Description : Extract files from a ZIP archive
+   Example     : unzip archive.zip
+
+-----------------------------------------
+
+9. gzip
+   Description : Compress a file using Gzip
+   Example     : gzip largefile.log
+
+-----------------------------------------
+
+10. gunzip
+    Description : Decompress a Gzip file
+    Example     : gunzip file.gz
+
+-----------------------------------------
+
+11. tar -czf
+    Description : Create a compressed TAR archive
+    Example     : tar -czf backup.tar.gz /var/www
+
+-----------------------------------------
+
+12. tar -xzf
+    Description : Extract a compressed TAR archive
+    Example     : tar -xzf backup.tar.gz
+
+-----------------------------------------
+
+13. tar -tf
+    Description : List contents of a TAR archive
+    Example     : tar -tf backup.tar.gz
+
+=========================================
+END OF CHAPTER 4
+=========================================
