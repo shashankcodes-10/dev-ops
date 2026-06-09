@@ -1,0 +1,139 @@
+=========================================
+CHAPTER 2: ADVANCED COMMANDS
+=========================================
+
+Advanced text processing, file viewing, and shell utilities for power users.
+
+1. head
+   Description : Show first N lines of a file
+   Example     : head -20 /var/log/syslog
+
+-----------------------------------------
+
+2. tail
+   Description : Show last N lines of a file
+   Example     : tail -20 /var/log/syslog
+
+-----------------------------------------
+
+3. tail -f
+   Description : Follow live log output
+   Example     : tail -f /var/log/syslog
+
+-----------------------------------------
+
+4. less
+   Description : View file with scrollable output
+   Example     : less /etc/passwd
+
+-----------------------------------------
+
+5. more
+   Description : View file page by page
+   Example     : more /etc/passwd
+
+-----------------------------------------
+
+6. wc
+   Description : Count words, lines, and bytes
+   Example     : wc -l file.txt
+
+-----------------------------------------
+
+7. cut
+   Description : Cut specific columns from text
+   Example     : cut -d: -f1 /etc/passwd
+
+-----------------------------------------
+
+8. tee
+   Description : Read stdin and write to stdout and file
+   Example     : ls | tee output.txt
+
+-----------------------------------------
+
+9. sort
+   Description : Sort lines of text
+   Example     : sort -r names.txt
+
+-----------------------------------------
+
+10. uniq
+    Description : Remove duplicate lines
+    Example     : sort names.txt | uniq
+
+-----------------------------------------
+
+11. tr
+    Description : Translate or delete characters
+    Example     : echo "hello" | tr a-z A-Z
+
+-----------------------------------------
+
+12. diff
+    Description : Compare two files line by line
+    Example     : diff file1.txt file2.txt
+
+-----------------------------------------
+
+13. xargs
+    Description : Build commands from standard input
+    Example     : find . -name '*.log' | xargs rm
+
+-----------------------------------------
+
+14. ln -s
+    Description : Create a symbolic (soft) link
+    Example     : ln -s /etc/nginx nginx-conf
+
+-----------------------------------------
+
+15. ln
+    Description : Create a hard link
+    Example     : ln original.txt hardlink.txt
+
+-----------------------------------------
+
+16. vi / vim
+    Description : Open vi/vim text editor
+    Example     : vim /etc/nginx/nginx.conf
+
+-----------------------------------------
+
+17. nano
+    Description : Simple terminal text editor
+    Example     : nano /etc/hosts
+
+-----------------------------------------
+
+18. which
+    Description : Locate where a command lives
+    Example     : which python3
+
+-----------------------------------------
+
+19. whereis
+    Description : Find binary, source files, and man pages
+    Example     : whereis nginx
+
+-----------------------------------------
+
+20. alias
+    Description : Create a command shortcut
+    Example     : alias ll="ls -la"
+
+-----------------------------------------
+
+21. export
+    Description : Set environment variables
+    Example     : export PATH=$PATH:/opt/bin
+
+-----------------------------------------
+
+22. env
+    Description : Show all environment variables
+    Example     : env | grep HOME
+
+=========================================
+END OF CHAPTER 2
+=========================================
