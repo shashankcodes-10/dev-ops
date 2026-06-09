@@ -1,0 +1,55 @@
+=========================================
+CHAPTER 5: FILE TRANSFER COMMANDS
+=========================================
+
+Commands to transfer files securely between local and remote systems.
+
+1. ssh
+   Description : Connect to a remote host securely
+   Example     : ssh user@192.168.1.10
+
+-----------------------------------------
+
+2. scp
+   Description : Securely copy files between local and remote systems
+   Example     : scp file.txt user@server:/home/user/
+
+-----------------------------------------
+
+3. rsync
+   Description : Synchronize files and directories efficiently
+   Example     : rsync -avz /src/ user@server:/dst/
+
+-----------------------------------------
+
+4. wget
+   Description : Download files from a URL
+   Example     : wget https://example.com/file.tar.gz
+
+-----------------------------------------
+
+5. curl
+   Description : Transfer data from or to a URL
+   Example     : curl -O https://example.com/file
+
+-----------------------------------------
+
+6. curl -I
+   Description : Fetch only HTTP response headers
+   Example     : curl -I https://example.com
+
+-----------------------------------------
+
+7. ftp
+   Description : Connect using the File Transfer Protocol
+   Example     : ftp ftp.example.com
+
+-----------------------------------------
+
+8. sftp
+   Description : Secure File Transfer Protocol client
+   Example     : sftp user@server.com
+
+=========================================
+END OF CHAPTER 5
+=========================================
