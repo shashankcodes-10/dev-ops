@@ -216,9 +216,6 @@ This project covers:
 
 ---
 
-## Author
-
-
 
 ## Credits
 
