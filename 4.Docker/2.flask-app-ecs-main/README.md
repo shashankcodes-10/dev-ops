@@ -1,106 +1,297 @@
 # Flask App — AWS ECS Deployment
 
-A minimal Flask web application built for learning containerization and deployment to **AWS ECS (Elastic Container Service)**.
+A minimal Flask web application built for learning containerization and deployment concepts.
 
-Part of the [TrainWithShubham](https://github.com/TrainWithShubham) — DevOps Zero To Hero course.
+This project demonstrates different Docker image optimization techniques, including:
+
+* Single-Stage Docker Build
+* Multi-Stage Docker Build
+* Multi-Stage Build with Distroless Runtime
+
+Originally created as part of the DevOps learning journey from TrainWithShubham's DevOps Zero To Hero course.
 
 ![Python](https://img.shields.io/badge/Python-3.14-blue)
 ![Flask](https://img.shields.io/badge/Flask-3.1.1-green)
 ![Docker](https://img.shields.io/badge/Docker-Ready-2496ED)
 ![AWS ECS](https://img.shields.io/badge/AWS-ECS-FF9900)
 
+---
+
 ## Features
 
-- Responsive landing page with modern glassmorphism UI
-- `/health` endpoint for ECS load balancer health checks
-- Two Dockerfiles — simple and multistage (distroless)
+* Responsive Flask web application
+* Health check endpoint (`/health`)
+* Dockerized application
+* Demonstrates Docker image optimization techniques
+* Ready for deployment to AWS ECS
+
+---
 
 ## Tech Stack
 
-| Component | Technology |
-|-----------|------------|
-| Framework | Flask 3.1.1 |
-| Runtime   | Python 3.14 |
-| Container | Docker (python-slim / distroless) |
-| Deploy    | AWS ECS |
+| Component         | Technology              |
+| ----------------- | ----------------------- |
+| Framework         | Flask 3.1.1             |
+| Runtime           | Python 3.14             |
+| Containerization  | Docker                  |
+| Container Images  | Python Slim, Distroless |
+| Deployment Target | AWS ECS                 |
+
+---
 
 ## Project Structure
 
-```
+```text
 flask-app-ecs/
-├── app.py                 # Flask app with routes
-├── run.py                 # Entry point (host 0.0.0.0, port 80)
-├── requirements.txt       # Python dependencies
+├── app.py
+├── run.py
+├── requirements.txt
 ├── templates/
-│   └── index.html         # Landing page
-├── Dockerfile             # Simple single-stage build
-└── Dockerfile-multi       # Multistage build with distroless
+│   └── index.html
+├── Dockerfile
+└── README.md
 ```
 
-## Quick Start
+---
 
-### Run locally
+## Run Locally
+
+Install dependencies:
 
 ```bash
 pip install -r requirements.txt
+```
+
+Start the application:
+
+```bash
 python run.py
 ```
 
-App runs at **http://localhost:80**.
+Access:
 
-### Run with Docker
-
-**Simple build:**
-
-```bash
-docker build -t flask-app .
-docker run -p 80:80 flask-app
+```text
+http://localhost:80
 ```
 
-**Multistage build (smaller, production-grade):**
+---
 
-```bash
-docker build -f Dockerfile-multi -t flask-app .
-docker run -p 80:80 flask-app
+# Docker Implementations
+
+This repository contains three Docker build approaches for learning and comparison.
+
+---
+
+## 1. Single-Stage Build
+
+Uses a single image for both dependency installation and application runtime.
+
+### Workflow
+
+```text
+Python Slim
+     ↓
+Install Dependencies
+     ↓
+Copy Source Code
+     ↓
+Run Application
 ```
 
-## Dockerfiles Explained
+### Benefits
 
-### Simple (`Dockerfile`)
+* Easy to understand
+* Simple Dockerfile
+* Good for beginners
 
-Single-stage build using `python:3.14-slim`. Straightforward — copies everything, installs dependencies, runs the app. Good for development and learning.
+### Limitations
 
-### Multistage (`Dockerfile-multi`)
+* Larger image size
+* Contains build tools and package manager in runtime image
 
-Two-stage build:
-1. **Builder stage** — installs dependencies into a separate directory using `python:3.14-slim`
-2. **Final stage** — copies only the app and deps into a `distroless` image
+---
 
-Benefits:
-- Smaller final image (no pip, no shell, no OS utilities)
-- Reduced attack surface — distroless images contain only the app and its runtime
-- Better layer caching — dependencies are copied before source code
+## 2. Multi-Stage Build
+
+Uses separate stages for dependency preparation and application runtime.
+
+### Builder Stage
+
+* Uses `python:3.14-slim`
+* Installs dependencies into a custom directory
+
+### Runtime Stage
+
+* Uses a fresh `python:3.14-slim`
+* Copies only application files and dependencies
+
+### Benefits
+
+* Better layer organization
+* Cleaner runtime image
+* Faster rebuilds when application code changes
+
+### Additional Concepts Demonstrated
+
+* `--no-cache-dir`
+* Custom dependency location using:
+
+```bash
+pip install --target=/app/deps
+```
+
+* `PYTHONPATH`
+
+---
+
+## 3. Multi-Stage Build with Distroless Runtime
+
+Uses Distroless Python as the final runtime image.
+
+### Builder Stage
+
+```text
+python:3.14-slim
+```
+
+Responsibilities:
+
+* Install dependencies
+* Prepare application files
+
+### Runtime Stage
+
+```text
+gcr.io/distroless/python3-debian12
+```
+
+Responsibilities:
+
+* Run the Flask application
+
+### Benefits
+
+* Reduced attack surface
+* No shell
+* No package manager
+* No unnecessary operating system utilities
+* Production-oriented runtime image
+
+### Important Note
+
+Distroless images are designed primarily for security and minimal runtime environments. They are not always smaller than Alpine-based or Slim-based images.
+
+---
+
+## Build and Run
+
+### Single-Stage Build
+
+```bash
+docker build -t flask-app-single .
+docker run -p 80:80 flask-app-single
+```
+
+---
+
+### Multi-Stage Build
+
+```bash
+docker build -t flask-app-multistage .
+docker run -p 80:80 flask-app-multistage
+```
+
+---
+
+### Distroless Build
+
+```bash
+docker build -t flask-app-distroless .
+docker run -p 80:80 flask-app-distroless
+```
+
+---
 
 ## Endpoints
 
-| Route     | Method | Description                     |
-|-----------|--------|---------------------------------|
-| `/`       | GET    | Landing page                    |
-| `/health` | GET    | Health check (returns `Server is up and running`) |
+| Route     | Method | Description              |
+| --------- | ------ | ------------------------ |
+| `/`       | GET    | Application Landing Page |
+| `/health` | GET    | Health Check Endpoint    |
 
-## Deploy to AWS ECS
+---
 
-High-level steps to deploy this app on ECS:
+## AWS ECS Deployment
 
-1. **Push image to ECR**
-   ```bash
-   aws ecr get-login-password --region <region> | docker login --username AWS --password-stdin <account-id>.dkr.ecr.<region>.amazonaws.com
-   docker tag flask-app:latest <account-id>.dkr.ecr.<region>.amazonaws.com/flask-app:latest
-   docker push <account-id>.dkr.ecr.<region>.amazonaws.com/flask-app:latest
-   ```
+High-level deployment workflow:
 
-2. **Create ECS Task Definition** — specify the ECR image, port 80, memory/CPU limits
+### 1. Push Image to Amazon ECR
 
-3. **Create ECS Service** — attach to a cluster, configure desired count, link to a load balancer
+```bash
+aws ecr get-login-password --region <region> | docker login --username AWS --password-stdin <account-id>.dkr.ecr.<region>.amazonaws.com
 
-4. **Configure ALB** — target group pointing to port 80, use `/health` as the health check path
+docker tag flask-app:latest <account-id>.dkr.ecr.<region>.amazonaws.com/flask-app:latest
+
+docker push <account-id>.dkr.ecr.<region>.amazonaws.com/flask-app:latest
+```
+
+### 2. Create ECS Task Definition
+
+Configure:
+
+* Container Image
+* CPU
+* Memory
+* Port 80
+
+### 3. Create ECS Service
+
+Configure:
+
+* Desired Count
+* Networking
+* Load Balancer
+
+### 4. Configure Application Load Balancer
+
+Health Check Path:
+
+```text
+/health
+```
+
+---
+
+## Docker Concepts Practiced
+
+This project demonstrates:
+
+* Docker Images
+* Docker Containers
+* Dockerfile
+* Multi-Stage Builds
+* Distroless Images
+* Python Dependency Management
+* Layer Caching
+* `PYTHONPATH`
+* Runtime Optimization
+* Image Hardening
+
+---
+
+## Credits
+
+Original Flask Application:
+
+TrainWithShubham
+
+Repository:
+https://github.com/TrainWithShubham
+
+Dockerization practice, image optimization, Multi-Stage Builds, and Distroless implementation explored as part of a DevOps learning journey.
+
+---
+
+## License
+
+This project is licensed under the MIT License.
