@@ -1,0 +1,1 @@
+# React DevOps Portfolio\n\nPractice project for Docker image creation.
