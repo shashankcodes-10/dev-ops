@@ -1,56 +1,56 @@
+name: 2tierflasksqlapp
+
 services:
-    mysql:
+
+   mysql:
       image: mysql:5.7
-
       container_name: mysql
-
-      environment:
-         MYSQL_ROOT_PASSWORD: admin
-         MYSQL_USER: admin
-         MYSQL_PASSWORD: admin
-         MYSQL_DATABASE: tws_db 
-
-      volumes:
-        - mysqldb:/var/lib/mysql
-
       networks:
         - twotier
-
-      ports: 
-        - "3306:3306"    
-      
+      volumes:
+        - mysqldata:/var/lib/mysql
+      ports:
+        - "3306:3306"
+      environment:
+        - MYSQL_ROOT_PASSWORD=admin
+        - MYSQL_USER=admin
+        - MYSQL_PASSWORD=admin
+        - MYSQL_DATABASE=tws_db 
       healthcheck:
-        test: ["CMD","mysqladmin","ping","-h","localhost","-uroot","-padmin"]
-        interval: 10s
-        retries: 5
-        start_period: 60s
-        timeout: 5s
+          test: ["CMD","mysqladmin","ping","-h","localhost"]  
+          interval: 10s
+          timeout: 5s
+          retries: 5
 
-    flask-app:
-     build: .
-     image: 2flask-app
-     container_name: 2flask-app
-     environment:
-         MYSQL_HOST: mysql
-         MYSQL_USER: admin
-         MYSQL_PASSWORD: admin
-         MYSQL_DB: tws_db 
-    
-     networks:
+   flask:
+      container_name: 2tierflasksqlapp
+
+      build: .
+     
+      networks:
         - twotier
-     ports: 
-        - "5000:5000" 
-     depends_on:
-       - mysql
-     restart: always
+      ports:
+        - "5000:5000"  
+      environment:
+        - MYSQL_HOST=mysql
+        - MYSQL_USER=admin
+        - MYSQL_PASSWORD=admin
+        - MYSQL_DB=tws_db 
+      depends_on: 
+        - mysql    
+      healthcheck:
+        test: ["CMD","curl","-f","http://localhost:5000/health"]  
+        interval: 30s
+        timeout: 10s
+        retries: 3
+
 
 networks:
-   twotier:
-       external: true
+    twotier:
 
 volumes:
-  mysqldb:   
-       external: true       
+    mysqldata:
+       external: true
 
 
 
@@ -84,70 +84,3 @@ volumes:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# version: "3.8"
-
-# services:
-#   mysql:
-#     user: "${UID}:${GID}" 
-#     image: mysql:5.7
-#     container_name: mysql
-#     environment:
-#       MYSQL_ROOT_PASSWORD: root
-#       MYSQL_DATABASE: devops
-#       MYSQL_USER: admin
-#       MYSQL_PASSWORD: admin
-#     volumes:
-#       - ./mysql-data:/var/lib/mysql
-#       - ./message.sql:/docker-entrypoint-initdb.d/message.sql  
-#     networks:
-#       - twotier
-#     healthcheck:
-#       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
-#       interval: 10s
-#       timeout: 5s
-#       retries: 5
-#       start_period: 60s
-
-#   flask-app:
-#     image: trainwithshubham/two-tier-flask-app:latest
-#     container_name: flask-app
-#     ports:
-#       - "5000:5000"
-#     environment:
-#       MYSQL_HOST: mysql
-#       MYSQL_USER: root
-#       MYSQL_PASSWORD: root
-#       MYSQL_DB: devops
-#     depends_on:
-#       - mysql
-#     networks:
-#       - twotier
-#     restart: always
-#     healthcheck:
-#       test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
-#       interval: 10s
-#       timeout: 5s
-#       retries: 5
-#       start_period: 30s
-
-# networks:
-#   twotier:

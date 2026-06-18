@@ -32,7 +32,7 @@ WORKDIR /app
 
 RUN apt-get update \
    && apt-get upgrade -y\
-   && apt install -y gcc default-libmysqlclient-dev pkg-config\
+   && apt install -y curl gcc default-libmysqlclient-dev pkg-config\
    && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
@@ -47,7 +47,7 @@ WORKDIR /app
 
 RUN apt-get update \
    && apt-get upgrade -y\
-   && apt install -y gcc default-libmysqlclient-dev pkg-config\
+   && apt install -y curl gcc default-libmysqlclient-dev pkg-config\
    && rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /app/deps /app/deps
