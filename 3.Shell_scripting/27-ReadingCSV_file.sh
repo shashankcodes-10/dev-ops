@@ -19,7 +19,7 @@ tail -n +2 "$1" |
 <<method2
 
 	
-awk 'NR!=1 {print}' $1 | 
+awk 'NR!=1 {print}' "$1" | 
 	while IFS="," read col1 col2 col3
          do
                 echo "$col1 $col2 $col3"
