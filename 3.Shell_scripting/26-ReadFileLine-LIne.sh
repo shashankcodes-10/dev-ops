@@ -1,4 +1,4 @@
-# this the code to read a file line by line
+# this the script to read a file line by line
 
 
 
