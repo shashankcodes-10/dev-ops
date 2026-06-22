@@ -1,104 +1,104 @@
-1. Get Variable Value
-name="shashank"
+# 1. Get Variable Value
+# name="shashank"
 
-echo ${name}
+# echo ${name}
 
-Output:
+# Output:
 
-shashank
-
-
-2. Length of Variable
-name="shashank"
-
-echo ${#name}
-
-Output:
-
-8
-
-Very useful.
+# shashank
 
 
-3. Remove From End (Shortest Match)
-file="app.log"
+# 2. Length of Variable
+# name="shashank"
 
-echo ${file%.log}
+# echo ${#name}
 
-Output:
+# Output:
 
-app
+# 8
 
-Used often.
-
-
-4. Remove From Start (Shortest Match)
-path="/home/shashank/file.txt"
-
-echo ${path#/home/}
-
-Output:
-
-shashank/file.txt
+# Very useful.
 
 
-5. Replace Text
-env="dev"
+# 3. Remove From End (Shortest Match)
+# file="app.log"
 
-echo ${env/dev/prod}
+# echo ${file%.log}
 
-Output:
+# Output:
 
-prod
+# app
 
-
-6. Default Value
-echo ${name:-Guest}
-
-If:
-
-name=""
-
-Output:
-
-Guest
+# Used often.
 
 
-7. Substring
-name="shashank"
+# 4. Remove From Start (Shortest Match)
+# path="/home/shashank/file.txt"
 
-echo ${name:0:4}
+# echo ${path#/home/}
 
-Output:
+# Output:
 
-shas
-
-
-8. Uppercase
-name="shashank"
-
-echo ${name^^}
-
-Output:
-
-SHASHANK
+# shashank/file.txt
 
 
-9. Lowercase
-name="SHASHANK"
+# 5. Replace Text
+# env="dev"
 
-echo ${name,,}
+# echo ${env/dev/prod}
 
-Output:
+# Output:
 
-shashank
+# prod
 
 
-10. Remove Last Character
-disk="42%"
+# 6. Default Value
+# echo ${name:-Guest}
 
-echo ${disk%\%}
+# If:
 
-Output:
+# name=""
 
-42
+# Output:
+
+# Guest
+
+
+# 7. Substring
+# name="shashank"
+
+# echo ${name:0:4}
+
+# Output:
+
+# shas
+
+
+# 8. Uppercase
+# name="shashank"
+
+# echo ${name^^}
+
+# Output:
+
+# SHASHANK
+
+
+# 9. Lowercase
+# name="SHASHANK"
+
+# echo ${name,,}
+
+# Output:
+
+# shashank
+
+
+# 10. Remove Last Character
+# disk="42%"
+
+# echo ${disk%\%}
+
+# Output:
+
+# 42
