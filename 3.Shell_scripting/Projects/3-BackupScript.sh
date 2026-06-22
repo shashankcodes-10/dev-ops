@@ -129,7 +129,7 @@ fi
 
 if [[ ! -d "/home/shashank/backups" ]]
 then
-	mkdir-p  /home/shashank/backups
+	mkdir -p  /home/shashank/backups
 fi
 
 back="/home/shashank/backups"
